@@ -77,3 +77,24 @@ http://localhost:3000/about 접속시 작성한 코드 구동을 확인할 수 �
 3) 정리
 library는 개발자가 필요할때 가져와서 사용.
 framework는 개발자의 코드를 짜는 틀이자 구동기.
+
+
+#1.1 Pages (05:10)
+
+1) pages, componet, routing 
+/pages 아래에 생성한 파일의 이름 그대로 url에 라우팅된다.
+compoent 이름은 중요하지 않고 export default로 선언되는것이 중요하다.
+-> 사용자에게 보여주고 싶은것은 pages 폴더에서 export default function으로 작성해야한다.
+
+* Next.js는 잘못된 url(page) 접근시 404 page를 알아서 띄워준다.
+
+
+2) pages 예외사항
+index 이름은 앱의 홈페이지로 약속되어 자동으로 연결된다.
+(http://localhost:3000/index 는 에러가 발생한다.)
+
+jsx를 사용하고 있다면 React.js를 import할 필요가 없다.
+(.jsx 파일을 만들거나 import react from "react"; 구문이 불필요.)
+
+단, useState, useEffect와 같은 react method를 사용하고 싶을때는
+react.js를 import 해야한다.
