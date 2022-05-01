@@ -44,9 +44,9 @@ library를 사용할때는 개발자가 원하는대로 코드를 작성하고
 필요한 경우에 library에서 코드를 가져와서 동작하는데 사용한다.
 
 create reat-app을 통해서 react 프로젝트를 생성하면 
-ReactDOM.render() 부분이 만들어져 있고 항상 App componet로 시작하는데
-이 App componet는 비워진채로 있다.
-이때 componets에 작성하거나 Routes에 작성하는 등 다양하게 작성이 가능하다.
+ReactDOM.render() 부분이 만들어져 있고 항상 App component로 시작하는데
+이 App component는 비워진채로 있다.
+이때 components에 작성하거나 Routes에 작성하는 등 다양하게 작성이 가능하다.
 -> 언제 react를 부를지 어떤 폴더 구조로 작성할지를 개발자가 결정한다.
 (파일 배치, 코드 작성, 라우팅이 비교적 자유롭다.)
 
@@ -71,7 +71,7 @@ Next.js는 자동으로 서버의 Home에서 작성한 코드를 구동시킨다
 
 같은 방법으로 /pages/about.js 생성 후 코드를 작성하면
 http://localhost:3000/about 접속시 작성한 코드 구동을 확인할 수 있다.
-(pages 아래에 componet를 작성하면 해당 compoent 파일명의 주소로 자동 라우팅한다.)
+(pages 아래에 component를 작성하면 해당 compoent 파일명의 주소로 자동 라우팅한다.)
 
 
 3) 정리
@@ -81,7 +81,7 @@ framework는 개발자의 코드를 짜는 틀이자 구동기.
 
 #1.1 Pages (05:10)
 
-1) pages, componet, routing 
+1) pages, component, routing 
 /pages 아래에 생성한 파일의 이름 그대로 url에 라우팅된다.
 compoent 이름은 중요하지 않고 export default로 선언되는것이 중요하다.
 -> 사용자에게 보여주고 싶은것은 pages 폴더에서 export default function으로 작성해야한다.
@@ -140,7 +140,7 @@ HTML 다운로드시 수많은 JS를 함께 다운받는데 페이지가 로딩�
 react.js가 사용자에게 전송이 완료되면 react.js는 
 실제 구동가능한 앱의 기능을 구동하여 react.js 앱이 된다.
 
-Next.js는 react.js를 Back-end에서 동작시켜 페이지를 미리 만드는 작업을 통해 componet들을 render 시켜 HTML로 만든다.
+Next.js는 react.js를 Back-end에서 동작시켜 페이지를 미리 만드는 작업을 통해 component들을 render 시켜 HTML로 만든다.
 react.js가 HTML로 만든것을 Next.js는 페이지의 소스코드에 넣게 되고 사용자가 다운로드 받았을때 react.js가 로딩되지 않더라도 콘텐츠는 볼수 있게 된다.
 react.js가 로딩되면 이전에 받은 HTML과 연결되어 일반적인 react.js 앱이 된다.
 
@@ -153,8 +153,8 @@ react.js를 Front-end 안에서 실행하는것을 "hydration"이라고 부른�
 
 1) anchor 태그만 사용한 Navgation component
 기존의 index.js의 state 관련 구문을 지운다.
-/componets/NavBar.js 를 만들고 Home, About 페이지 네비게이션을 추가한다.
-index.js 및 about.js 에 NavBar componet를 추가한다.
+/components/NavBar.js 를 만들고 Home, About 페이지 네비게이션을 추가한다.
+index.js 및 about.js 에 NavBar component를 추가한다.
 
 크롬에서 확인해보면 페이지가 변경되는것을 확인할 수 있다.
 
@@ -185,8 +185,8 @@ router.pathname을 통해 현재 페이지를 확인하여 현재 페이지를 n
 1) Next.js style modules
 Next.js에서는 a태그에 style={}의 형태로 부여하는것 이외에 modules를 활용하여 부여할 수 있다.
 
-/componets/NavBar.module.css에 적용할 css를 작성하고 
-/componets/NavBar.js에 JS object로서 import 한다.
+/components/NavBar.module.css에 적용할 css를 작성하고 
+/components/NavBar.js에 JS object로서 import 한다.
 
 .module.css (css module)를 통해 CSS를 사용할 수 있도록 해준다.
 className을 {}안에 넣어서(JS Objet의 property) 사용하는데
@@ -210,7 +210,30 @@ jsx 프롭을 포함한 style 태그를 작성한다.
 
 브라우저에서 HTML 코드를 확인해보면 jsx-XXX~ 형태의 class명이 설정되어 있고
 이전 방법들과 같이 독립적으로 css가 적용되는것을 확인할 수 있다.
-(+ 다른 js 파일(부모 componet)에서 같은방식으로 작성하더라도 중복으로 적용되지 않는 모습을 확인할 수 있다.)
+(+ 다른 js 파일(부모 component)에서 같은방식으로 작성하더라도 중복으로 적용되지 않는 모습을 확인할 수 있다.)
 import가 필요없다는 장점도 있다.
 
-작성된 style jsx는 각 componet 내부로 적용범위가 한정된다.
+작성된 style jsx는 각 component 내부로 적용범위가 한정된다.
+
+
+#1.6 Custom App (10:10)
+
+1) 전역 style 부여
+<style jsx global>{` ~ `}</style>
+어떠한 component 관계없이 global 프롭을 포함하면 된다.
+
+2) App component
+NextJS가 모든 페이지 커스텀하여 랜더링 할 수 있게 하는 component.
+기본으로 프레임워크에 포함되며 코드 반복을 막는다.
+
+Next.js는 각 component들이 랜더링되기 전에 App(_app.js)을 먼저 확인하고 랜더링이 이루어 진다.
+어떻게 페이지가 구성되고 어떤 컴포넌트가 어떤 페이지에 있어야하는지가 정의된다.
+
+NextJS는 _app.js > _app.js.App() > 2개의 prop; component, pageProps 순으로 호출한다.
+ex. About 페이지를 랜더링하는경우 NextJS는 _app.js.App()의 component에 About의 함수 Potato를 넣는다. 
+그후 _app.js.App()에서 어떤것을 return 하던간에 _app.js에서 추가로 작성한 요소들도 함께 return 해준다.
+
+3) globals.css
+NextJS로 앱을 만들때는 global.css 파일을 다른 곳에 import 할 수 없다.
+페이지, component에서 css를 import 하기 위해서는 반드시 module이어야 한다.
+그러나 _app.js에서는 어떤 css든지 import가 가능하다.
