@@ -147,3 +147,34 @@ react.js가 로딩되면 이전에 받은 HTML과 연결되어 일반적인 reac
 react.js를 Front-end 안에서 실행하는것을 "hydration"이라고 부른다.
 
 + 이미 HTML에 무언가 있는 상태이기 때문에 SEO에도 좋다.
+
+
+#1.3 Routing (08:04)
+
+1) anchor 태그만 사용한 Navgation component
+기존의 index.js의 state 관련 구문을 지운다.
+/componets/NavBar.js 를 만들고 Home, About 페이지 네비게이션을 추가한다.
+index.js 및 about.js 에 NavBar componet를 추가한다.
+
+크롬에서 확인해보면 페이지가 변경되는것을 확인할 수 있다.
+
+그러나 이는 Next.js를 비롯한 library, framework에서는 권장되지 않는다.
+anchor 태그('<a></a>')만을 사용하여 페이지를 이동하는 경우 페이지 새로고침이 발생한다.
+
+2) Link를 활용한 Navgation component
+ReactJS에서 React Router Link를 사용하는것처럼 
+NextJS에서는 next/link를 사용하여 Client Side Navigation을 제공한다.
+
+nav>Link(href)>a 순으로 작성하여 Navgation을 구현한다.
+
+브라우저로 확인해보면 훨씬 빠르게 페이지 변경이 이루어지는것을 확인할 수 있다.
+(React Router Dom을 사용하는 create-react-app의 ReactJS와 같이 새로고침이 발생하지 않는다.)
+
+Link에 작성한 style 및 className이 a태그에 적용되지 않는것을 볼수 있다.
+Link에는 href만 사용하여 rounting하고 a 태그에 style 및 className 작성하여 적용한다.
+
+3) route hook
+NextJS에서 useRouter를 제공하기 때문에 그냥 가져다 쓰면 된다.
+console.log로 router를 확인해보면 location에 관한 정보를 확인할 수 있다.
+
+router.pathname을 통해 현재 페이지를 확인하여 현재 페이지를 navbar에 표현하는 방법을 사용할 수 있다. (현재 페이지 red, 다른 페이지 blue)
