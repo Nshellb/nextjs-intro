@@ -198,3 +198,19 @@ className을 {}안에 넣어서(JS Objet의 property) 사용하는데
 2-1) `${~} ${~}...` 의 형태로 사용한다.
 2-2) [class명, class명...].join(" ")
 (.join(" "): 배열의 내용을 공백한칸의 문자열로 합침)
+
+
+#1.5 Styles JSX (06:56)
+
+1) styled jsx
+NextJS에만 존재하는 style 부여 방법이다.
+
+jsx 프롭을 포함한 style 태그를 작성한다.
+<style jsx>{` ~ `}</style>
+
+브라우저에서 HTML 코드를 확인해보면 jsx-XXX~ 형태의 class명이 설정되어 있고
+이전 방법들과 같이 독립적으로 css가 적용되는것을 확인할 수 있다.
+(+ 다른 js 파일(부모 componet)에서 같은방식으로 작성하더라도 중복으로 적용되지 않는 모습을 확인할 수 있다.)
+import가 필요없다는 장점도 있다.
+
+작성된 style jsx는 각 componet 내부로 적용범위가 한정된다.
