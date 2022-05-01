@@ -178,3 +178,23 @@ NextJS에서 useRouter를 제공하기 때문에 그냥 가져다 쓰면 된다.
 console.log로 router를 확인해보면 location에 관한 정보를 확인할 수 있다.
 
 router.pathname을 통해 현재 페이지를 확인하여 현재 페이지를 navbar에 표현하는 방법을 사용할 수 있다. (현재 페이지 red, 다른 페이지 blue)
+
+
+#1.4 CSS Modules (06:54)
+
+1) Next.js style modules
+Next.js에서는 a태그에 style={}의 형태로 부여하는것 이외에 modules를 활용하여 부여할 수 있다.
+
+/componets/NavBar.module.css에 적용할 css를 작성하고 
+/componets/NavBar.js에 JS object로서 import 한다.
+
+.module.css (css module)를 통해 CSS를 사용할 수 있도록 해준다.
+className을 {}안에 넣어서(JS Objet의 property) 사용하는데
+실제 HTML에서 적용된 class명을 확인하면 무작위로 부여된 코드가 추가된 값이 부여되는데 페이지가 빌드될때 Next.js가 class명을 무작위로 바꿔주었기 때문이다.
+이를 통해 클래스 이름이 중복되더라도 css 값의 충돌을 일으키지 않게 한다. 
+
+2) Next.js에서 여러개의 클래스를 적용하는 경우
+여러개의 class를 적용하는경우 여러개의 문자열을 전달하는 방법을 사용한다.
+2-1) `${~} ${~}...` 의 형태로 사용한다.
+2-2) [class명, class명...].join(" ")
+(.join(" "): 배열의 내용을 공백한칸의 문자열로 합침)
