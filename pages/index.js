@@ -1,17 +1,18 @@
-import { useState } from "react";
-// import "../styles/globals.css" // do not work
+// import Head from "next/head"; // head를 반복 작성하는 경우
+import Seo from "../components/Seo"; // head 반복 작성을 피한경우
 
 export default function Home() {
     return (
         <div>
-            {/* NavBar의 active style을 가져오지 못함 */}
+            {/* head를 반복 작성하는 경우 - Home */}
+            {/* <Head>
+                <title>Home | Next Movies</title>
+            </Head> */}
+
+            {/* head 반복 작성을 피한경우 */}
+            <Seo title="Home" />
+
             <h1 className="active">Hello</h1>
-            {/* NavBar a에 영향을 주지 못하는 style  */}
-            <style jsx global>{`
-                a {
-                    color: white;
-                }
-            `}</style>
         </div>
     );
 }

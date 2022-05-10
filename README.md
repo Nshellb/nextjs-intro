@@ -237,3 +237,49 @@ ex. About 페이지를 랜더링하는경우 NextJS는 _app.js.App()의 componen
 NextJS로 앱을 만들때는 global.css 파일을 다른 곳에 import 할 수 없다.
 페이지, component에서 css를 import 하기 위해서는 반드시 module이어야 한다.
 그러나 _app.js에서는 어떤 css든지 import가 가능하다.
+
+
+#1.7 Recap (11:41)
+Next.js는 framework이고 정해진 틀안에서 코드를 작성하고 개발자의 코드를 구동시킨다.
+SSR을 사용하여 일부 랜더링한 HTML을 전달하여 모두 로딩되지 않은 상태에서도 UI를 표시할 수 있다.
+Style 을 부여하는 경우 module을 활용하거나 <style jsx></style>을 활용한다.
+전역의 style을 부여하는경우 global prop을 활용하거나 _app.js를 활용한다.
+_app.js의 함수명보다 _app.js라는 파일명을 통해 Next.js가 인식한다는것이 중요하다.
+
+
+#2.0 Patterns (06:45)
+1) layout; Next.js 에서 사용하는 패턴
+layout 패턴 : custom app component 이용시 사용
+
+/component/Layout.js 라는 react component 생성
+
+Layout.js 코드 작성중 
+children : react.js 제공 prop. 하나의 component를 또 다른 component 안에 넣을때 사용
+
+_app.js에서 NavBar component를 지우고 Layout component로 대체
+
+Layout component는 children이라는 prop을 가지게 되며
+children은 _app.js의 <Component {...pageProps} />를 가리키게 된다.
+-> _app.js Layout 안에 어떤것을 넣더라도 Layout.js의 children에서 보여지게 된다.
+
+대다수는 너무 긴 _app.js 파일을 선호하지 않지만 
+global로 import 해야할 많은것을 가지게된다.
+(Google Analytics, 검색엔진 관련, 스크립트 분석 등...)
+그래서 아주 큰 react.js component를 사용하는 대신 Layout component에 생성해준다.
+
+2) Layout 에 style 부여하기 
+Next.js가 제공하는 head component 사용하기위해 /pages/index.js에 head를 import.
+Next.js에는 간단하고 작으며 자주 사용하는 기능들을 이와 같이 패키지들로 구현할수 있다.
+Next.js에 종속되어 있기에 큰 오류들로부터 비교적 자유롭다.
+
+기존의 create reat-app를 사용했다면 react helmet 같은것을 사용했을것이며
+별개의 component, code, error 등과 마주할 수도 있다...
+
+Head component를 생성하고 이 안에 들어가는 모든것들은 html의 head안에 보여지게된다.
+about.js 안에도 Head를 import하고 코드를 작성한다.
+
+3) head component 중복 import 없애기
+/component/[아무이름].js를 생성하고 반복되는 구문을 작성한다.
+기존의 반복되게 사용했던 /pages/index.js와 about.js 안에 생성한 component를 추가한다.
+
+구문 반복을 없애고 정상적으로 동작하는것을 확인할 수 있다.
